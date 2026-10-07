@@ -1,0 +1,287 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+
+@source "../src";
+
+@theme inline {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0rem;
+  --background: #ffffff;
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: #ffffff;
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.129 0.042 264.695);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: #C00000;
+  --destructive-foreground: #ffffff;
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: #C00000;
+}
+
+.dark {
+  --background: oklch(0 0 0);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.984 0.003 247.858);
+  --primary-foreground: oklch(0.129 0.042 264.695);
+  --secondary: oklch(0.208 0.042 265.755);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.208 0.042 265.755);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.208 0.042 265.755);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: #C00000;
+  --destructive-foreground: #ffffff;
+  --border: oklch(0.208 0.042 265.755);
+  --input: oklch(0.208 0.042 265.755);
+  --ring: #C00000;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .premium-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media (min-width: 640px) {
+    .premium-container {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .premium-container {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .premium-container {
+      max-width: 1360px;
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+  }
+
+  /* Typography System Specification */
+  .text-h1 {
+    font-size: clamp(40px, 2.5rem + 1.5vw, 64px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .text-h2 {
+    font-size: clamp(28px, 1.65rem + 1.2vw, 36px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  @media (min-width: 1024px) {
+    .text-h2 {
+      font-size: 40px;
+      line-height: 1.1;
+    }
+  }
+
+  .text-h3 {
+    font-size: clamp(12px, 0.75rem + 0.3vw, 14px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+  }
+
+  @media (min-width: 1024px) {
+    .text-h3 {
+      font-size: 21px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .text-subtitle {
+    font-size: clamp(16px, 1rem + 0.25vw, 18px);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .text-subtitle {
+      font-size: 17px;
+      line-height: 1.45;
+    }
+  }
+
+  .text-body-text,
+  .text-body {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  @media (min-width: 1024px) {
+
+    .text-body-text,
+    .text-body {
+      font-size: 17px;
+      line-height: 1.45;
+    }
+  }
+
+  .btn-text {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.20;
+    letter-spacing: 0;
+  }
+
+  .nav-text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.20;
+    letter-spacing: 0;
+  }
+
+  .text-label {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.02em;
+  }
+}
+
+@keyframes borderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-spin {
+  animation: borderSpin 6s linear infinite;
+  will-change: transform;
+}
+
+@keyframes svgDash {
+  0% {
+    stroke-dashoffset: 800;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-svg-dash {
+  animation: svgDash 5s linear infinite;
+}
+
+@keyframes typewriterBlink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.animate-typewriter-cursor {
+  animation: typewriterBlink 550ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Mobile View Only: Enforce 14px on all descriptions, subtitles, card text, and body text under Hero Section */
+@media (max-width: 767px) {
+  main section:not(#hero) p:not(.text-h1):not(.text-h2):not(.text-h3):not(.text-label),
+  main section:not(#hero) .text-subtitle,
+  main section:not(#hero) .text-body-text,
+  main section:not(#hero) .text-body,
+  main section:not(#hero) .btn-text,
+  main section:not(#hero) .text-btn,
+  main section:not(#hero) [class*="description"] {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Below-the-fold Rendering Optimization: Skip off-screen DOM layout and paint work until scrolled into view */
+main section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}

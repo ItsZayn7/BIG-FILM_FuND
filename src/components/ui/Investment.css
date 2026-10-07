@@ -1,0 +1,1673 @@
+/* =========================================================
+   BFF INVESTMENT PAGE
+   Lightweight / responsive / performance focused
+========================================================= */
+
+:root {
+  --bff-red: #C00000;
+  --bff-dark: #111827;
+  --bff-text: #252525;
+  --bff-muted: #626262;
+  --bff-border: #e8e8e8;
+  --bff-bg: #ffffff;
+  --bff-white: #ffffff;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+.investment-page,
+.investment-page * {
+  box-sizing: border-box;
+}
+
+.investment-page {
+  width: 100%;
+  min-height: 100vh;
+  /* Make background transparent to match the current app theme, 
+     but the code had var(--bff-bg). If they want a solid bg, it stays. */
+  background: var(--bff-bg);
+  color: var(--bff-dark);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  padding: 0;
+}
+
+/* Dark mode handling (if applicable in project) */
+.dark .investment-page {
+  background: transparent; /* Or dark bg */
+  color: white;
+}
+
+.dark .investment-page .investment-title {
+  color: white;
+}
+.dark .investment-page .info-card-text {
+  color: #ddd;
+}
+.dark .investment-page .investment-info-card,
+.dark .investment-page .framework-card,
+.dark .investment-page .why-card,
+.dark .investment-page .difference-card {
+  background: #111;
+  border-color: #333;
+}
+.dark .investment-page .node-list button {
+  background: #1a1a1a;
+  border-color: #333;
+  color: white;
+}
+.dark .investment-page .framework-description,
+.dark .investment-page .why-card p,
+.dark .investment-page .difference-item p {
+  color: #bbb;
+}
+.dark .investment-page .icon-circle {
+  background: #222;
+  border-color: #444;
+}
+
+.investment-page button,
+.investment-page a {
+  font: inherit;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.investment-nav {
+  width: min(1200px, 100%);
+  min-height: 60px;
+
+  margin: 0 auto;
+
+  padding: 9px 9px 9px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(220, 220, 220, 0.8);
+  border-radius: 18px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.07);
+
+  position: relative;
+  z-index: 10;
+}
+
+
+.bff-logo {
+  flex: 0 0 auto;
+
+  font-size: 18px;
+  line-height: 1;
+
+  font-weight: 800;
+  letter-spacing: -1px;
+
+  color: var(--bff-red);
+}
+
+
+.desktop-nav {
+  min-width: 0;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+}
+
+
+.desktop-nav a {
+  position: relative;
+
+  color: #161616;
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  padding: 13px 0;
+
+  transition:
+    color 180ms ease;
+}
+
+
+.desktop-nav a:hover {
+  color: var(--bff-red);
+}
+
+
+.desktop-nav a.active {
+  color: var(--bff-red);
+}
+
+
+.desktop-nav a.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -10px;
+
+  height: 2px;
+
+  background: var(--bff-red);
+
+  border-radius: 10px;
+}
+
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+
+.settings-button {
+  width: 30px;
+  height: 30px;
+
+  border: 0;
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+
+  color: #444;
+
+  cursor: pointer;
+}
+
+
+.waitlist-button {
+  border: 0;
+
+  background: var(--bff-red);
+  color: white;
+
+  border-radius: 999px;
+
+  padding: 10px 15px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+
+.waitlist-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.92);
+}
+
+
+/* =========================================================
+   MAIN HERO
+========================================================= */
+
+.investment-hero {
+  width: 100%;
+
+  margin: 42px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.06fr)
+    minmax(400px, 0.94fr);
+
+  gap: 48px;
+
+  align-items: start;
+}
+
+
+.investment-left {
+  min-width: 0;
+}
+
+
+.eyebrow {
+  color: var(--bff-red);
+
+  font-size: 21px;
+  font-weight: 750;
+
+  letter-spacing: -0.2px;
+
+  margin-bottom: 17px;
+}
+
+
+.investment-title {
+  margin: 0;
+
+  max-width: 560px;
+
+  color: var(--bff-dark);
+
+  font-size: clamp(38px, 4vw, 49px);
+
+  font-weight: 750;
+
+  line-height: 0.99;
+
+  letter-spacing: -2.4px;
+}
+
+
+.investment-title span {
+  color: var(--bff-red);
+}
+
+
+/* =========================================================
+   INFORMATION CARDS
+========================================================= */
+
+.investment-info-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+
+  margin-top: 25px;
+}
+
+
+.investment-info-card {
+  min-height: 79px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 11px 19px 11px 17px;
+
+  position: relative;
+
+  background: white;
+
+  border: 1px solid var(--bff-border);
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 4px 13px rgba(0, 0, 0, 0.045);
+
+  overflow: hidden;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.investment-info-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 3px;
+
+  background: var(--bff-red);
+}
+
+
+.investment-info-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+
+  min-width: 50px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--bff-red);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #fff7f7
+    );
+
+  border: 1px solid #eeeeee;
+
+  box-shadow:
+    0 4px 10px rgba(205, 0, 7, 0.07);
+}
+
+
+.info-card-text {
+  font-size: 13px;
+
+  line-height: 1.48;
+
+  color: #222;
+
+  max-width: 480px;
+}
+
+
+.info-card-text.bold {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FRAMEWORK CARD
+========================================================= */
+
+.framework-card {
+  background: white;
+
+  border: 1px solid var(--bff-border);
+
+  border-radius: 15px;
+
+  padding: 25px 22px 22px;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.06);
+
+  min-width: 0;
+
+  align-self: flex-end;
+}
+
+
+.framework-header {
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+}
+
+
+.framework-header h2 {
+  margin: 0;
+
+  font-size: 22px;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.7px;
+}
+
+
+.framework-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 17px;
+}
+
+
+.complete-badge {
+  background: var(--bff-red);
+  color: white;
+
+  padding: 6px 10px;
+
+  border-radius: 5px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+.phase {
+  color: #929292;
+
+  font-size: 13px;
+}
+
+
+.framework-card h3 {
+  margin: 21px 0 10px;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+.framework-description {
+  margin: 0;
+
+  color: #444;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+.framework-divider {
+  width: 100%;
+  height: 1px;
+
+  background: #e9e9e9;
+
+  margin: 21px 0;
+}
+
+
+/* =========================================================
+   ENERGY
+========================================================= */
+
+.energy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 13px;
+}
+
+
+.energy-header > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+
+.energy-header strong {
+  font-size: 13px;
+}
+
+
+.progress-track {
+  width: 100%;
+  height: 7px;
+
+  margin-top: 11px;
+
+  background: #d8d8d8;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+}
+
+
+.progress-fill {
+  height: 100%;
+
+  background: var(--bff-red);
+
+  border-radius: inherit;
+
+  transition:
+    width 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   CONNECTED NODES
+========================================================= */
+
+.connected-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #969696;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  margin-bottom: 11px;
+}
+
+
+.node-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.node-list button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 9px 12px;
+
+  background: white;
+
+  border: 1px solid #dcdcdc;
+
+  border-radius: 6px;
+
+  color: #252525;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.04);
+
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+
+.node-list button:hover {
+  border-color: #c7c7c7;
+  transform: translateX(2px);
+}
+
+
+/* =========================================================
+   FRAMEWORK ITEMS
+========================================================= */
+
+.framework-items {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 8px;
+}
+
+
+.framework-item {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 9px;
+
+  color: #333;
+
+  font-size: 11px;
+
+  line-height: 1.35;
+}
+
+
+.framework-item .icon-circle {
+  width: 49px;
+  height: 49px;
+
+  min-width: 49px;
+}
+
+
+/* =========================================================
+   SECOND ROW
+========================================================= */
+
+.round-section {
+  width: 100%;
+
+  margin: 26px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.04fr)
+    minmax(0, 0.96fr);
+
+  gap: 28px;
+
+  align-items: stretch;
+}
+
+
+.round-card {
+  min-width: 0;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   ENABLES CARD
+========================================================= */
+
+.enables-card {
+  padding: 21px 20px;
+
+  color: white;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 80, 80, 0.22),
+      transparent 45%
+    ),
+    linear-gradient(
+      145deg,
+      #d60008,
+      #980005
+    );
+
+  box-shadow:
+    0 9px 25px rgba(205, 0, 7, 0.17);
+}
+
+
+.round-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+
+.round-heading h2 {
+  margin: 0;
+
+  font-size: 20px;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.5px;
+}
+
+
+.round-heading-icon {
+  width: 46px;
+  height: 46px;
+
+  min-width: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 9px;
+
+  color: white;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+
+.enables-card .round-description {
+  margin: 16px 0 17px;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+
+  color: rgba(255, 255, 255, 0.94);
+}
+
+
+/* =========================================================
+   ENABLE GRID
+========================================================= */
+
+.enable-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 7px;
+}
+
+
+.enable-item {
+  min-height: 65px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.26);
+
+  border-radius: 9px;
+
+  background: rgba(60, 0, 0, 0.19);
+
+  color: white;
+
+  font-size: 11px;
+
+  line-height: 1.35;
+}
+
+
+.enable-icon {
+  width: 39px;
+  height: 39px;
+
+  min-width: 39px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f00008,
+      #a00005
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   WHY NOW
+========================================================= */
+
+.why-card {
+  padding: 25px 22px;
+
+  background: white;
+
+  border: 1px solid var(--bff-border);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.055);
+}
+
+
+.why-card .round-heading {
+  margin-bottom: 23px;
+}
+
+
+.why-card p {
+  margin: 0 0 24px;
+
+  color: #444;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.why-card .execution-text {
+  display: block;
+
+  color: var(--bff-red);
+
+  font-size: 13px;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   DIFFERENCE CARD
+========================================================= */
+
+.difference-card {
+  width: 100%;
+
+  margin: 22px auto 0;
+
+  padding: 20px 38px;
+
+  background: white;
+
+  border: 1px solid var(--bff-border);
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.055);
+}
+
+
+.difference-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 17px;
+}
+
+
+.difference-heading .icon-circle {
+  width: 48px;
+  height: 48px;
+
+  min-width: 48px;
+}
+
+
+.difference-heading h2 {
+  margin: 0;
+
+  font-size: 19px;
+
+  line-height: 1.25;
+
+  letter-spacing: -0.5px;
+}
+
+
+.difference-content {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr);
+
+  gap: 36px;
+
+  align-items: center;
+}
+
+
+.difference-item {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+.difference-item p {
+  margin: 0;
+
+  color: #333;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+
+.difference-divider {
+  height: 86px;
+
+  background: #dedede;
+
+  position: relative;
+}
+
+
+.difference-divider span {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--bff-red);
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-cta {
+  width: 100%;
+
+  min-height: 157px;
+
+  margin: 19px auto 0;
+
+  padding: 23px 43px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 48px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 18% 50%,
+      rgba(205, 0, 7, 0.18),
+      transparent 24%
+    ),
+    linear-gradient(
+      120deg,
+      #090909,
+      #171717
+    );
+
+  border: 1px solid #252525;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+
+.cta-icon {
+  width: 74px;
+  height: 74px;
+
+  min-width: 74px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: white;
+
+  background:
+    radial-gradient(
+      circle,
+      #cf0007,
+      #470003 58%,
+      #101010 70%
+    );
+
+  border: 1px solid rgba(255, 60, 60, 0.7);
+
+  box-shadow:
+    0 0 25px rgba(205, 0, 7, 0.4);
+}
+
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 530px;
+}
+
+
+.cta-content p {
+  margin: 0 0 8px;
+
+  color: white;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+.cta-content h2 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 25px;
+
+  letter-spacing: -0.8px;
+}
+
+
+.cta-content h2 span {
+  color: var(--bff-red);
+}
+
+
+/* =========================================================
+   CINEMATIC LIGHT TRAILS
+   Pure CSS — no image / video required
+========================================================= */
+
+.cinematic-lines {
+  position: absolute;
+
+  right: -70px;
+  top: 0;
+
+  width: 52%;
+  height: 100%;
+
+  pointer-events: none;
+
+  opacity: 0.75;
+
+  transform: skewX(-20deg);
+}
+
+
+.cinematic-lines span {
+  position: absolute;
+
+  right: -5%;
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(205, 0, 7, 0.2),
+      rgba(255, 30, 30, 0.9)
+    );
+
+  filter:
+    drop-shadow(0 0 5px rgba(205, 0, 7, 0.5));
+
+  transform-origin: right center;
+}
+
+
+.cinematic-lines span:nth-child(1) {
+  top: 30%;
+  transform: rotate(-12deg);
+}
+
+
+.cinematic-lines span:nth-child(2) {
+  top: 44%;
+  transform: rotate(-18deg);
+}
+
+
+.cinematic-lines span:nth-child(3) {
+  top: 57%;
+  transform: rotate(-24deg);
+}
+
+
+.cinematic-lines span:nth-child(4) {
+  top: 70%;
+  transform: rotate(-30deg);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .investment-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .desktop-nav {
+    gap: 11px;
+  }
+
+  .desktop-nav a {
+    font-size: 8px;
+  }
+
+  .investment-hero {
+    gap: 30px;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(360px, 0.9fr);
+  }
+
+  .investment-title {
+    font-size: 42px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / SMALL DESKTOP
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .investment-nav {
+    justify-content: space-between;
+  }
+
+  .investment-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .framework-card {
+    width: 100%;
+  }
+
+  .round-section {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .investment-page {
+    padding: 8px 10px 28px;
+  }
+
+
+  /* NAV */
+
+  .investment-nav {
+    min-height: 55px;
+
+    padding:
+      8px
+      9px
+      8px
+      16px;
+
+    border-radius: 14px;
+  }
+
+
+  .bff-logo {
+    font-size: 17px;
+  }
+
+
+  .settings-button {
+    display: none;
+  }
+
+
+  .waitlist-button {
+    padding: 9px 13px;
+
+    font-size: 9px;
+  }
+
+
+  /* HERO */
+
+  .investment-hero {
+    margin-top: 34px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+  }
+
+
+  .eyebrow {
+    font-size: 21px;
+
+    margin-bottom: 13px;
+  }
+
+
+  .investment-title {
+    max-width: 100%;
+
+    font-size: clamp(34px, 10vw, 40px);
+
+    line-height: 1.01;
+
+    letter-spacing: -1.8px;
+  }
+
+
+  .investment-info-list {
+    margin-top: 20px;
+
+    gap: 8px;
+  }
+
+
+  .investment-info-card {
+    min-height: auto;
+
+    padding:
+      13px
+      13px
+      13px
+      14px;
+
+    gap: 12px;
+
+    align-items: flex-start;
+
+    border-radius: 10px;
+  }
+
+
+  .investment-info-card .icon-circle {
+    width: 43px;
+    height: 43px;
+
+    min-width: 43px;
+  }
+
+
+  .info-card-text {
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+
+
+  /* FRAMEWORK */
+
+  .framework-card {
+    padding: 19px 16px;
+
+    border-radius: 13px;
+  }
+
+
+  .framework-header {
+    gap: 12px;
+  }
+
+
+  .framework-header .icon-circle {
+    width: 44px;
+    height: 44px;
+
+    min-width: 44px;
+  }
+
+
+  .framework-header h2 {
+    font-size: 19px;
+  }
+
+
+  .framework-card h3 {
+    font-size: 14px;
+  }
+
+
+  .framework-description {
+    font-size: 12px;
+
+    line-height: 1.65;
+  }
+
+
+  .framework-items {
+    gap: 3px;
+  }
+
+
+  .framework-item {
+    font-size: 9px;
+  }
+
+
+  .framework-item .icon-circle {
+    width: 43px;
+    height: 43px;
+
+    min-width: 43px;
+  }
+
+
+  /* ROUND */
+
+  .round-section {
+    margin-top: 18px;
+
+    gap: 18px;
+  }
+
+
+  .enables-card {
+    padding: 17px 14px;
+  }
+
+
+  .round-heading h2 {
+    font-size: 18px;
+  }
+
+
+  .round-heading-icon {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+  }
+
+
+  .enables-card .round-description {
+    font-size: 11px;
+
+    line-height: 1.55;
+
+    margin-top: 13px;
+  }
+
+
+  .enable-grid {
+    grid-template-columns: 1fr;
+
+    gap: 6px;
+  }
+
+
+  .enable-item {
+    min-height: 58px;
+
+    font-size: 11px;
+
+    padding: 8px 9px;
+  }
+
+
+  .enable-icon {
+    width: 36px;
+    height: 36px;
+
+    min-width: 36px;
+  }
+
+
+  /* WHY */
+
+  .why-card {
+    padding: 19px 16px;
+  }
+
+
+  .why-card .round-heading {
+    margin-bottom: 18px;
+  }
+
+
+  .why-card p {
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+  }
+
+
+  .why-card .execution-text {
+    font-size: 12px;
+
+    margin-bottom: 20px;
+  }
+
+
+  /* DIFFERENCE */
+
+  .difference-card {
+    margin-top: 18px;
+
+    padding: 17px 16px;
+
+    border-radius: 13px;
+  }
+
+
+  .difference-heading {
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+
+  .difference-heading .icon-circle {
+    width: 43px;
+    height: 43px;
+
+    min-width: 43px;
+  }
+
+
+  .difference-heading h2 {
+    font-size: 16px;
+
+    line-height: 1.3;
+  }
+
+
+  .difference-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 17px;
+
+    align-items: stretch;
+  }
+
+
+  .difference-item {
+    align-items: flex-start;
+
+    gap: 13px;
+  }
+
+
+  .difference-item .icon-circle {
+    width: 43px;
+    height: 43px;
+
+    min-width: 43px;
+  }
+
+
+  .difference-item p {
+    font-size: 11.5px;
+
+    line-height: 1.6;
+  }
+
+
+  .difference-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+
+  .difference-divider span {
+    display: none;
+  }
+
+
+  /* CTA */
+
+  .final-cta {
+    min-height: 210px;
+
+    margin-top: 16px;
+
+    padding:
+      22px
+      20px;
+
+    align-items: flex-start;
+
+    gap: 17px;
+
+    border-radius: 13px;
+  }
+
+
+  .cta-icon {
+    width: 56px;
+    height: 56px;
+
+    min-width: 56px;
+  }
+
+
+  .cta-content {
+    max-width: calc(100% - 73px);
+  }
+
+
+  .cta-content p {
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+
+
+  .cta-content h2 {
+    font-size: 21px;
+
+    line-height: 1.2;
+  }
+
+
+  .cinematic-lines {
+    width: 75%;
+
+    right: -35%;
+
+    opacity: 0.5;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .investment-title {
+    font-size: 32px;
+  }
+
+
+  .framework-items {
+    grid-template-columns: repeat(2, 1fr);
+
+    row-gap: 17px;
+  }
+
+
+  .framework-item {
+    font-size: 10px;
+  }
+
+
+  .cta-content p {
+    font-size: 11px;
+  }
+
+
+  .cta-content h2 {
+    font-size: 19px;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / PERFORMANCE
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .investment-page *,
+  .investment-page *::before,
+  .investment-page *::after {
+    animation: none !important;
+
+    transition: none !important;
+
+    scroll-behavior: auto !important;
+  }
+
+}
+
+
+/* Avoid expensive effects on low-powered/mobile devices */
+
+@media (max-width: 600px) {
+
+  .investment-info-card,
+  .framework-card,
+  .round-card,
+  .difference-card,
+  .final-cta {
+    box-shadow:
+      0 4px 14px rgba(0, 0, 0, 0.045);
+  }
+
+}
