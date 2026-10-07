@@ -11,7 +11,7 @@ export function PrinciplesSection() {
       <div className="mx-auto w-full max-w-[1350px] grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         <div id="clean-picture" className="w-full min-h-[580px] lg:min-h-[640px] h-full scroll-mt-28">
           <DestinationCard
-            imageUrl="/model-card-1.webp"
+            imageUrl="/card1images.jpg"
             location="Each Film. One Clean Economic Picture."
             href="#"
             buttonText="See How"
@@ -63,7 +63,7 @@ export function PrinciplesSection() {
         </div>
         <div id="no-back" className="w-full min-h-[580px] lg:min-h-[640px] h-full scroll-mt-28">
           <DestinationCard
-            imageUrl="/card22.png"
+            imageUrl="/card2images.jpg"
             location="No Back of the Line."
             flag=""
             stats=""
@@ -112,7 +112,7 @@ export function PrinciplesSection() {
         </div>
         <div id="discipline" className="w-full min-h-[580px] lg:min-h-[640px] h-full scroll-mt-28">
           <DestinationCard
-            imageUrl="/model-card-3.webp"
+            imageUrl="/card3image.jpg"
             location="Commercial Discipline, Built In"
             flag=""
             stats=""

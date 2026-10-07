@@ -59,7 +59,7 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
             {/* Glass Container Wrapper - Sleek compact height matching Card 3 */}
             <div
               onClick={(e) => e.stopPropagation()}
-              className="relative flex flex-col h-[400px] sm:h-[420px] justify-between col-start-1 row-start-1 w-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-300 transform-gpu bg-black/20 backdrop-blur-xl group-hover:border-white/20 p-5 sm:p-6"
+              className="relative flex flex-col h-[440px] sm:h-[460px] justify-between col-start-1 row-start-1 w-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-300 transform-gpu bg-black/20 backdrop-blur-xl group-hover:border-white/20 p-5 sm:p-6"
             >
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
 
